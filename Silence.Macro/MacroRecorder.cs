@@ -33,6 +33,8 @@ namespace Silence.Macro
         /// </summary>
         public bool IsRunning { get; private set; }
 
+        public bool RecordMouse { get; set; }
+
         /// <summary>
         /// Initialises a new instance of a macro recorder.
         /// </summary>
@@ -125,7 +127,7 @@ namespace Silence.Macro
 
         private void underlyingHook_MouseDown(object sender, Silence.Hooking.GlobalMouseEventHandlerArgs e)
         {
-            if (IsRunning)
+            if (IsRunning && RecordMouse)
             {
                 AddDelayEvent();
                 CurrentMacro.AddEvent(new MacroMouseDownEvent(e.Point, e.Button));
@@ -134,7 +136,7 @@ namespace Silence.Macro
 
         private void underlyingHook_MouseUp(object sender, Silence.Hooking.GlobalMouseEventHandlerArgs e)
         {
-            if (IsRunning)
+            if (IsRunning && RecordMouse)
             {
                 AddDelayEvent();
                 CurrentMacro.AddEvent(new MacroMouseUpEvent(e.Point, e.Button));
@@ -143,7 +145,7 @@ namespace Silence.Macro
 
         private void underlyingHook_MouseMove(object sender, Silence.Hooking.GlobalMouseEventHandlerArgs e)
         {
-            if (IsRunning)
+            if (IsRunning && RecordMouse)
             {
                 AddDelayEvent();
                 CurrentMacro.AddEvent(new MacroMouseMoveEvent(e.Point));
@@ -152,7 +154,7 @@ namespace Silence.Macro
 
         private void underlyingHook_MouseWheel(object sender, Silence.Hooking.GlobalMouseEventHandlerArgs e)
         {
-            if (IsRunning)
+            if (IsRunning && RecordMouse)
             {
                 AddDelayEvent();
                 CurrentMacro.AddEvent(new MacroMouseWheelEvent(e.Point, e.Delta));

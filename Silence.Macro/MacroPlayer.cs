@@ -1,4 +1,5 @@
-﻿using Silence.Simulation;
+﻿using AutoIt;
+using Silence.Simulation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,6 +75,10 @@ namespace Silence.Macro
             underlyingKeyboardSimulator = new KeyboardSimulator(new InputSimulator());
             repetitions = 1;
             cancelled = false;
+
+            AutoItX.AutoItSetOption("SendKeyDelay", 0);
+            AutoItX.AutoItSetOption("SendKeyDownDelay", 0);
+            AutoItX.AutoItSetOption("WinWaitDelay", 0);
         }
 
         /// <summary>
@@ -171,15 +176,23 @@ namespace Silence.Macro
                     }
                     else if (current is MacroKeyDownEvent)
                     {
+                        /*
                         // Key down event.
                         MacroKeyDownEvent castEvent = (MacroKeyDownEvent)current;
                         underlyingKeyboardSimulator.KeyDown((Simulation.Native.VirtualKeyCode)castEvent.VirtualKeyCode);
+                        */
+                        MacroKeyEvent castEvent = (MacroKeyEvent)current;
+                        AutoItX.Send("{" + ConvertKeyToAutoIt(castEvent.VirtualKeyCode) + " down}");
                     }
                     else if (current is MacroKeyUpEvent)
                     {
+                        /*
                         // Key up event.
                         MacroKeyUpEvent castEvent = (MacroKeyUpEvent)current;
                         underlyingKeyboardSimulator.KeyUp((Simulation.Native.VirtualKeyCode)castEvent.VirtualKeyCode);
+                        */
+                        MacroKeyEvent castEvent = (MacroKeyEvent)current;
+                        AutoItX.Send("{" + ConvertKeyToAutoIt(castEvent.VirtualKeyCode) + " up}");
                     }
                     else if (current is MacroMouseWheelEvent)
                     {
@@ -194,6 +207,36 @@ namespace Silence.Macro
             }
 
             IsPlaying = false;
+        }
+
+        private string ConvertKeyToAutoIt(int virtualKeyCode)
+        {
+            var nCode = (Simulation.Native.VirtualKeyCode)virtualKeyCode;
+
+            switch (nCode)
+            {
+                case Simulation.Native.VirtualKeyCode.RETURN:
+                    return "ENTER";
+                case Simulation.Native.VirtualKeyCode.LCONTROL:
+                case Simulation.Native.VirtualKeyCode.CONTROL:
+                    return "LCTRL";
+                case Simulation.Native.VirtualKeyCode.RCONTROL:
+                    return "RCTRL";
+                case Simulation.Native.VirtualKeyCode.LMENU:
+                case Simulation.Native.VirtualKeyCode.MENU:
+                    return "LALT";
+                case Simulation.Native.VirtualKeyCode.RMENU:
+                    return "RALT";
+                case Simulation.Native.VirtualKeyCode.SHIFT:
+                    return "LSHIFT";
+                case Simulation.Native.VirtualKeyCode.PRIOR:
+                    return "PGUP";
+                case Simulation.Native.VirtualKeyCode.NEXT:
+                    return "PGDN";
+                default:
+                    return Enum.GetName(typeof(Simulation.Native.VirtualKeyCode), nCode)
+                        .Replace("VK_", "");
+            }
         }
 
         /// <summary>

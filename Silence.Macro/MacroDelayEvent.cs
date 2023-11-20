@@ -10,7 +10,7 @@ namespace Silence.Macro
     /// <summary>
     /// Represents a delay that occurs between user actions during recording of a macro.
     /// </summary>
-    class MacroDelayEvent : MacroEvent
+    public class MacroDelayEvent : MacroEvent
     {
 
         /// <summary>

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label_loadedFile = new System.Windows.Forms.Label();
             this.saveControlButton = new Silence.ControlButton();
             this.openControlButton = new Silence.ControlButton();
             this.clearControlButton = new Silence.ControlButton();
@@ -37,6 +39,7 @@
             this.playControlButton = new Silence.ControlButton();
             this.stopControlButton = new Silence.ControlButton();
             this.recordControlButton = new Silence.ControlButton();
+            this.chkRecordMouse = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saveControlButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openControlButton)).BeginInit();
@@ -49,6 +52,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chkRecordMouse);
+            this.panel1.Controls.Add(this.label_loadedFile);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.saveControlButton);
             this.panel1.Controls.Add(this.openControlButton);
             this.panel1.Controls.Add(this.clearControlButton);
@@ -59,8 +65,35 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(448, 64);
+            this.panel1.Size = new System.Drawing.Size(448, 188);
             this.panel1.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(4, 129);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(155, 54);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Hotkeys:\r\nCtrl+Shift+F5 = Start Recording\r\nCtrl+Shift+F6 = Stop Recording\r\nCtrl+S" +
+    "hift+F7 = Play Recording";
+            // 
+            // label_loadedFile
+            // 
+            this.label_loadedFile.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_loadedFile.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label_loadedFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_loadedFile.Location = new System.Drawing.Point(165, 71);
+            this.label_loadedFile.Name = "label_loadedFile";
+            this.label_loadedFile.Size = new System.Drawing.Size(280, 112);
+            this.label_loadedFile.TabIndex = 9;
+            this.label_loadedFile.Text = "No Open File";
+            this.label_loadedFile.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // saveControlButton
             // 
@@ -167,11 +200,23 @@
             this.recordControlButton.TabStop = false;
             this.recordControlButton.Click += new System.EventHandler(this.recordControlButton_Click);
             // 
+            // chkRecordMouse
+            // 
+            this.chkRecordMouse.AutoSize = true;
+            this.chkRecordMouse.Checked = true;
+            this.chkRecordMouse.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkRecordMouse.Location = new System.Drawing.Point(4, 71);
+            this.chkRecordMouse.Name = "chkRecordMouse";
+            this.chkRecordMouse.Size = new System.Drawing.Size(96, 17);
+            this.chkRecordMouse.TabIndex = 10;
+            this.chkRecordMouse.Text = "Record Mouse";
+            this.chkRecordMouse.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 64);
+            this.ClientSize = new System.Drawing.Size(448, 188);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -179,8 +224,8 @@
             this.MinimizeBox = false;
             this.Name = "FormMain";
             this.Text = "Silence";
-            this.Load += new System.EventHandler(this.FormMain_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saveControlButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.openControlButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clearControlButton)).EndInit();
@@ -202,7 +247,9 @@
         private ControlButton playControlButton;
         private ControlButton stopControlButton;
         private ControlButton recordControlButton;
-
+        private System.Windows.Forms.Label label_loadedFile;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkRecordMouse;
     }
 }
 

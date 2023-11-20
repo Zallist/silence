@@ -29,6 +29,11 @@ namespace Silence.Macro
         }
 
         /// <summary>
+        /// Editable list of events - Only touch if you are sure it won't break anything
+        /// </summary>
+        public List<MacroEvent> EditableEvents => events;
+
+        /// <summary>
         /// Initialises a new instance of a macro.
         /// </summary>
         public Macro()

@@ -11,7 +11,7 @@ namespace Silence.Macro
     /// <summary>
     /// Represents a mouse move event that occurs during macro recording.
     /// </summary>
-    class MacroMouseMoveEvent : MacroMouseEvent
+    public class MacroMouseMoveEvent : MacroMouseEvent
     {
 
         /// <summary>
