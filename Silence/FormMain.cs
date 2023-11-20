@@ -143,6 +143,8 @@ namespace Silence
                     return;
             }
 
+            Toast("Starting recording...");
+
             // Begin recording.
             _recorder.RecordMouse = chkRecordMouse.Checked;
             _recorder.StartRecording();
@@ -151,10 +153,14 @@ namespace Silence
         private void StopRecording()
         {
             if (_player.IsPlaying)
+            {
+                Toast("Stopping playback");
                 _player.CancelPlayback();
+            }
 
             if (_recorder.IsRunning)
             {
+                Toast("Stopping recording");
                 _recorder.StopRecording();
 
                 if (_recorder.CurrentMacro != null && _recorder.CurrentMacro.Events.Length > 0)
@@ -234,19 +240,32 @@ namespace Silence
 
             if (_recorder.IsRunning)
             {
-                MessageBox.Show("Cannot start playing while recording!");
+                Toast("Cannot start while recording");
                 return;
             }
 
             // Load and play macro.
             if (_recorder.CurrentMacro == null || _recorder.CurrentMacro.Events.Length == 0)
             {
-                MessageBox.Show("No events recorded!");
+                Toast("No events recorded or loaded");
                 return;
             }
 
+            Toast("Starting playback");
+
             _player.LoadMacro(_recorder.CurrentMacro);
             _player.PlayMacroAsync();
+        }
+
+        private void Toast(string description)
+        {
+            new System.UI.Widget.ToastBuilder(this)
+                .SetCaption("Silence")
+                .SetDescription(description)
+                .SetDuration(System.Enums.Duration.LENGTH_SHORT)
+                .SetMuting(true)
+                .Build()
+                .ShowAsync();
         }
 
         private HotKeyRegister hotkeyStartRecording = null;
