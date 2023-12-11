@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Silence")]
-[assembly: AssemblyDescription("A simple, clean macro recorder written in C#. Windows 10 compatible.")]
+[assembly: AssemblyTitle("Kelp")]
+[assembly: AssemblyDescription("kelp")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Saul Johnson")]
-[assembly: AssemblyProduct("Silence")]
-[assembly: AssemblyCopyright("Copyright © Saul Johnson 2016")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Kelp")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1cbbc97a-d669-48fa-81d3-e5cbd5e55c7b")]
+[assembly: Guid("C1A94A19-454D-4B5E-B1A6-E1121E872593")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("5.0.0.0")]
+[assembly: AssemblyFileVersion("5.0.0.0")]

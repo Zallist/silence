@@ -260,7 +260,7 @@ namespace Silence
         private void Toast(string description)
         {
             new System.UI.Widget.ToastBuilder(this)
-                .SetCaption("Silence")
+                .SetCaption("Kelp")
                 .SetDescription(description)
                 .SetDuration(System.Enums.Duration.LENGTH_SHORT)
                 .SetMuting(true)
